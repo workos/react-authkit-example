@@ -2,7 +2,7 @@ import { Button, Flex } from "@radix-ui/themes";
 import { useAuth } from "@workos-inc/authkit-react";
 
 export function SignInButton({ large }: { large?: boolean }) {
-  const { user, signIn, signOut } = useAuth();
+  const { user, isLoading, signIn, signOut } = useAuth();
 
   if (user) {
     return (
@@ -20,6 +20,7 @@ export function SignInButton({ large }: { large?: boolean }) {
         signIn();
       }}
       size={large ? "3" : "2"}
+      disabled={isLoading}
     >
       Sign In {large && "with AuthKit"}
     </Button>
