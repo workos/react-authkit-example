@@ -14,7 +14,7 @@ You will need a [WorkOS account](https://dashboard.workos.com/signup).
 
 4. Navigate to the API keys tab and copy the _Client ID_. Rename the `.env.local.example` file to `.env.local` and supply your Client ID.
 
-7. Run the following command and navigate to [http://localhost:3000](http://localhost:5173).
+7. Run the following command and navigate to [http://localhost:5173](http://localhost:5173).
 
    ```bash
    npm run dev
