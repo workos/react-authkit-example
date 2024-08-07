@@ -9,6 +9,7 @@ export default function Layout() {
   return (
     <AuthKitProvider
       clientId={import.meta.env.VITE_WORKOS_CLIENT_ID}
+      apiHostname={import.meta.env.VITE_WORKOS_API_HOSTNAME}
       onRedirectCallback={({ state }) => {
         if (state?.returnTo) {
           navigate(state.returnTo);
