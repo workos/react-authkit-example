@@ -1,8 +1,10 @@
 import { Box, Flex, Heading, Text, TextField } from "@radix-ui/themes";
 import { useUser } from "../hooks/use-user";
+import { useAuth } from "@workos-inc/authkit-react";
 
 export default function Account() {
   const user = useUser();
+  const { role, organizationId } = useAuth();
 
   if (!user) {
     return "...";
@@ -12,8 +14,9 @@ export default function Account() {
     ["First name", user.firstName],
     ["Last name", user.lastName],
     ["Email", user.email],
-    // role ? ["Role", role] : [], TODO
+    role ? ["Role", role] : [],
     ["Id", user.id],
+    organizationId ? ["Organization Id", organizationId] : [],
   ].filter((arr) => arr.length > 0);
 
   return (
