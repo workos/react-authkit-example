@@ -5,6 +5,7 @@ import Root from "./routes/root";
 import "@radix-ui/themes/styles.css";
 import Index from "./routes";
 import Account from "./routes/account";
+import Login from "./routes/login";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
