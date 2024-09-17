@@ -1,6 +1,5 @@
 import { Button, Flex, Heading, Text } from "@radix-ui/themes";
 import { useAuth } from "@workos-inc/authkit-react";
-import React from "react";
 import { Link } from "react-router-dom";
 import { SignInButton } from "../components/sign-in-button";
 

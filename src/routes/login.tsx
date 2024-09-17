@@ -6,4 +6,5 @@ export default function Login() {
   const [params] = useSearchParams();
   const context = params.get("context") ?? undefined;
   signIn({ context });
+  return null;
 }
