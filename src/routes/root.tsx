@@ -1,21 +1,12 @@
 import { Box, Button, Card, Container, Flex, Theme } from "@radix-ui/themes";
+import { Link, Outlet } from "react-router-dom";
 import { Footer } from "../components/footer";
+import Providers from "../components/providers";
 import { SignInButton } from "../components/sign-in-button";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { AuthKitProvider } from "@workos-inc/authkit-react";
 
 export default function Layout() {
-  const navigate = useNavigate();
   return (
-    <AuthKitProvider
-      clientId={import.meta.env.VITE_WORKOS_CLIENT_ID}
-      apiHostname={import.meta.env.VITE_WORKOS_API_HOSTNAME}
-      onRedirectCallback={({ state }) => {
-        if (state?.returnTo) {
-          navigate(state.returnTo);
-        }
-      }}
-    >
+    <Providers>
       <Theme
         accentColor="iris"
         panelBackground="solid"
@@ -54,6 +45,6 @@ export default function Layout() {
           </Flex>
         </Container>
       </Theme>
-    </AuthKitProvider>
+    </Providers>
   );
 }
