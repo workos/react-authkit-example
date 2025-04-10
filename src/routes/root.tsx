@@ -8,10 +8,12 @@ export default function Layout() {
   const navigate = useNavigate();
   return (
     <AuthKitProvider
+      devMode={false}
       clientId={import.meta.env.VITE_WORKOS_CLIENT_ID}
       apiHostname={import.meta.env.VITE_WORKOS_API_HOSTNAME}
       onRedirectCallback={({ state }) => {
         if (state?.returnTo) {
+          console.log(`%creturnTo: ${state.returnTo}`, "font-weight:bold;color: #00bcd4");
           navigate(state.returnTo);
         }
       }}
