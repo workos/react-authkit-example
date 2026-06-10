@@ -19,7 +19,12 @@ export default function Layout() {
         // protocol-relative URLs (//evil.com), and javascript: URIs. We pass
         // only the path portion to react-router so navigation never leaves the
         // app.
-        const url = new URL(state.returnTo, window.location.origin);
+        let url: URL;
+        try {
+          url = new URL(state.returnTo, window.location.origin);
+        } catch {
+          return;
+        }
         if (url.origin === window.location.origin) {
           navigate(url.pathname + url.search + url.hash);
         }
