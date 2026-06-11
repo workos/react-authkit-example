@@ -11,8 +11,22 @@ export default function Layout() {
       clientId={import.meta.env.VITE_WORKOS_CLIENT_ID}
       apiHostname={import.meta.env.VITE_WORKOS_API_HOSTNAME}
       onRedirectCallback={({ state }) => {
-        if (state?.returnTo) {
-          navigate(state.returnTo);
+        if (typeof state?.returnTo !== "string") return;
+        // `state` round-trips through the auth redirect as plaintext in the URL
+        // and is not validated by WorkOS, so treat `returnTo` as untrusted
+        // input. Resolve it against our own origin and only navigate if it
+        // stays same-origin — this rejects absolute URLs (https://evil.com),
+        // protocol-relative URLs (//evil.com), and javascript: URIs. We pass
+        // only the path portion to react-router so navigation never leaves the
+        // app.
+        let url: URL;
+        try {
+          url = new URL(state.returnTo, window.location.origin);
+        } catch {
+          return;
+        }
+        if (url.origin === window.location.origin) {
+          navigate(url.pathname + url.search + url.hash);
         }
       }}
     >

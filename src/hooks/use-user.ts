@@ -11,7 +11,7 @@ export const useUser = (): UserOrNull => {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      signIn({ state: { returnTo: location.pathname } });
+      signIn({ state: { returnTo: location.pathname + location.search } });
     }
   }, [isLoading, user]);
 
