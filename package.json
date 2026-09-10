@@ -2,6 +2,7 @@
   "name": "react-authkit-example",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "npm@11.19.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
